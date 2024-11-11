@@ -8,12 +8,11 @@ const Appointment = () => {
 
   const { doctors, currencySymbol } = useContext(AppContext);
 
+  const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THUD", "FRI", "SAT"];
+
   const [docInfo, setDocInfo] = useState(null);
-
   const [doctorSlots, setDoctorSlots] = useState([]);
-
   const [slotIndex, setSlotIndex] = useState(0);
-
   const [slotTime, setSlotTime] = useState("");
 
   const fetchDocInfo = async () => {
@@ -23,7 +22,9 @@ const Appointment = () => {
 
   const getAvailableSlots = async () => {
     setDoctorSlots([]);
+
     let today = new Date();
+
     for (let i = 0; i < 7; i++) {
       // getting date with index
       let currentDate = new Date(today);
@@ -116,6 +117,39 @@ const Appointment = () => {
                 {currencySymbol} {docInfo.fees}
               </span>
             </p>
+          </div>
+        </div>
+
+        {/* Booking Slots */}
+        <div className="sm:ml-72 sm:pl-4 mt-4 font-medium to-gray-700">
+          <p className="">Booking slots</p>
+          <div className="flex gap-3 items-center w-full overflow-x-scroll mt-4">
+            {doctorSlots.length &&
+              doctorSlots.map((item, index) => (
+                <div
+                  onClick={() => setSlotIndex(index)}
+                  className={`text-center py-6 min-w-16 rounded-full cursor-pointer 
+                    ${
+                      slotIndex === index
+                        ? "bg-primary text-white"
+                        : "border bg-gray-200"
+                    }`}
+                  key={index}
+                >
+                  <p className="">
+                    {item[0] && daysOfWeek[item[0].datetime.getDay()]}
+                  </p>
+                  <p className="">{item[0] && item[0].datetime.getDate()}</p>
+                </div>
+              ))}
+          </div>
+          <div className="">
+            {doctorSlots.length &&
+              doctorSlots[slotIndex].map((item, index) => (
+                <p key={index} className="">
+                  {item.time.toLowerCase()}
+                </p>
+              ))}
           </div>
         </div>
       </div>
