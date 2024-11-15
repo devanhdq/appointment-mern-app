@@ -135,7 +135,7 @@ const MyProfile = () => {
             className="border border-primary px-8 py-2 rounded-full hover:text-white hover:bg-primary transition-all duration-200"
             onClick={() => setIsEdit(false)}
           >
-            Exit
+            Edit
           </button>
         ) : (
           <button

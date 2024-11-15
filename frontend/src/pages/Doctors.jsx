@@ -36,7 +36,7 @@ const Doctors = () => {
         >
           Filters
         </button>
-        <div className="flex flex-col gap-4 text-sm text-gray-600">
+        <div className={`flex-col gap-4 text-sm text-gray-600 ${showFilter ? "flex" : " hidden sm:flex "} `}>
           <p
             onClick={() =>
               speciality === "General physician"
