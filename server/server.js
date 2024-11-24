@@ -5,6 +5,7 @@ import cors from "cors";
 import "dotenv/config";
 import connectDB from "./config/mongodb.js";
 import connectCloudinary from "./config/cloudinary.js";
+import adminRouter from "./routers/admin.route.js";
 
 //
 
@@ -12,8 +13,8 @@ import connectCloudinary from "./config/cloudinary.js";
 
 const app = express();
 const port = process.env.PORT || 4000;
-connectDB()
-connectCloudinary()
+connectDB();
+connectCloudinary();
 
 // middleware
 
@@ -22,10 +23,12 @@ app.use(cors());
 
 // api endpoints
 
+app.use("/api/admin", adminRouter);
+
 app.get("/", (req, res) => {
-    res.send("API RUNNING 1");
+  res.send("API RUNNING 1");
 });
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });
