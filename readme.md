@@ -1,1 +1,6 @@
-https://youtu.be/eRTTlS0zaW8?si=_5JBBcRj7f91EhPt&t=17058
+https://youtu.be/eRTTlS0zaW8?si=GjX9ZE-b1atj1vrS&t=18510
+
+MONGODB_URI='mongodb://localhost:27017'
+CLOUDINARY_NAME="dstfvmoc7"
+CLOUDINARY_API_KEY="573439864821631"
+CLOUDINARY_SECRET_KEY="PnmSgXnKqbxgFDbifKxPTVtqsxA"
